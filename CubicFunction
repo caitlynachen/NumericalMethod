@@ -1,0 +1,10 @@
+package jrJava.numericalMethod;
+
+public class CubicFunction implements Function{
+
+	public double calculateY(double x) {
+		double y = x*x*x -1.5*x*x +0.7*x -2.7;
+		return y;
+	}
+
+}
