@@ -1,0 +1,11 @@
+package jrJava.numericalMethod;
+
+public interface Function {
+	
+	public double calculateY(double x);
+	
+	
+
+}
+
+	
