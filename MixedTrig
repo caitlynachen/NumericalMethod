@@ -1,0 +1,11 @@
+package jrJava.numericalMethod;
+
+public class MixedTrig implements Function{
+
+
+	public double calculateY(double x) {
+		double y = x*Math.sin(x);
+		return y;
+	}
+
+}
