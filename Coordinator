@@ -1,0 +1,16 @@
+# NumericalMethod
+package jrJava.numericalMethod;
+
+public class Coordinator {
+
+
+	public static void main(String[] args) {
+		 
+		Function f = new MixedTrig();
+		Grapher grapher = new Grapher(f); 
+		grapher.graph();
+		
+
+	}
+
+}
