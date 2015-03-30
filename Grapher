@@ -1,0 +1,80 @@
+package jrJava.numericalMethod;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+
+import resources.DrawingBoard;
+
+public class Grapher {
+
+
+
+	private Function f;
+	private DrawingBoard board;
+
+	private int screenWidth=800;
+	private int screenHeight = 600;
+	private double xMin = -10;
+	private double xMax = 10;
+	private double yMin = -10;
+	private double yMax = 10;
+	private double deltaX = 0.001;
+	private int numOfTicks = 20;
+	
+	public Grapher(Function _f){
+		f= _f;
+		board = new DrawingBoard(screenWidth, screenHeight);
+	}
+	
+	
+
+	public void graph(){
+		drawAxis();
+		drawTicks();
+		drawFunction();
+		board.repaint();
+	}
+
+	private int getGraphX(double x){
+		return (int)((x-xMin)/(xMax-xMin)*screenWidth);
+
+	}
+	
+	private int getGraphY(double y){
+		return (int)((y-yMax)/(yMin-yMax)*screenHeight);
+
+	}
+
+	private void drawAxis(){
+		Graphics2D canvas = board.getCanvas();
+		canvas.setColor(Color.magenta);
+		canvas.drawLine(getGraphX(xMin), getGraphY(0), getGraphX(xMax), getGraphY(0));
+		canvas.drawLine(getGraphX(0), getGraphY(yMin), getGraphX(0), getGraphY(yMax));
+	}
+
+	private void drawTicks(){
+		Graphics2D canvas = board.getCanvas();
+		canvas.setColor(Color.red);
+		canvas.setFont(new Font("Times", Font.BOLD, 8));
+		for(double x = xMin; x<= xMax; x = x+(xMax-xMin)/numOfTicks){
+			
+			canvas.drawLine(getGraphX(x), getGraphY(0)-2, getGraphX(x), getGraphY(0)+2);
+			
+			
+		}
+		
+	}
+
+	private void drawFunction(){
+		Graphics2D canvas = board.getCanvas();
+		canvas.setColor(Color.cyan);
+		
+		for(double x = xMin; x<=xMax; x = x +deltaX){
+			double y = f.calculateY(x);
+			canvas.fillRect(getGraphX(x), getGraphY(y), 1, 1);
+			
+		
+		}
+	}
+}
