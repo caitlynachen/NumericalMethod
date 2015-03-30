@@ -1,0 +1,15 @@
+package jrJava.numericalMethod;
+
+public class QuadraticFunction implements Function{
+
+	private double a = 1.0;
+	private double b = 0;
+	private double c = -5;
+
+	public double calculateY(double x) {
+
+		double y = a*x*x +b*x+c;
+		return y;
+	}
+
+}
