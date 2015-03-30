@@ -1,0 +1,40 @@
+package jrJava.numericalMethod;
+
+public class EqnSolver {
+
+	
+	public static void main(String[] args) {
+		double xL=5;
+		double xR=7;
+		
+		for(int i=0; i<1000; i++){
+			
+			double fL = function(xL);
+			double fR = function(xR);
+			
+			double xM = (xL +xR)/2;
+			double fM = function(xM);
+			
+			System.out.println("At i="+i+"     x="+xM);
+			if(Math.abs(fM)<0.00000000000000001){
+				break;
+			}
+			
+			if(fL*fM>0){
+				xL  = xM;
+				
+			}
+			
+			else{
+				xR = xM;
+			}
+		}
+
+	}
+	
+	private static double function(double x){
+		double y = x*Math.sin(x);
+		return y;
+	}
+
+}
